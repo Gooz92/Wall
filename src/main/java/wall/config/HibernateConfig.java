@@ -14,16 +14,11 @@ public class HibernateConfig {
 	
 	public BasicDataSource getDataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
-		/*dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
+		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
 		dataSource
 				.setUrl("jdbc:hsqldb:file:wall");
 		dataSource.setUsername("SA");
-		dataSource.setPassword("");*/
-		
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/wall");
-		dataSource.setUsername("root");
-		dataSource.setPassword("8tes30e64Cb3");
+		dataSource.setPassword("");
 		return dataSource;
 	}
 	
@@ -32,8 +27,7 @@ public class HibernateConfig {
 		LocalSessionFactoryBuilder sessionFactoryBuilder = new LocalSessionFactoryBuilder(
 				getDataSource());
 		sessionFactoryBuilder.scanPackages("wall.entity.java");
-		//sessionFactoryBuilder.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
-		sessionFactoryBuilder.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+		sessionFactoryBuilder.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
 		sessionFactoryBuilder.setProperty("hibernate.hbm2ddl.auto", "create");
 		sessionFactoryBuilder.setProperty("hibernate.show_sql", "true");
 		return sessionFactoryBuilder.buildSessionFactory();
