@@ -4,3 +4,10 @@
 *.jar
 *.war
 *.ear
+
+# ide settings #
+.settings
+.classpath
+.project
+
+target
